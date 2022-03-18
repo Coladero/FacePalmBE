@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const axios = require('axios');
 const { useParams } = require("react-router-dom");
+const playersModel = require('../models/players.model')
 
 
 router.post("/countries", async (req, res, next)=>{
@@ -34,8 +35,6 @@ router.post("/countries/:id/players/details", async (req, res, next)=>{
         next(err)
     }
 })
-
-
 
 
 module.exports = router
