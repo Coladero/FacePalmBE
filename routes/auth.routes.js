@@ -2,9 +2,10 @@ const router = require("express").Router();
 const UserModel = require("../models/User.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const {isAuthed} = require("../middleware/isAuthed")
 
 
-//////!SignUp//////
+                    //////!SignUp//////
 //*Line9, create route for signup.
 router.post("/signup" , async (req, res, next) =>{
     const {name, surname, email, password} = req.body;
@@ -39,7 +40,7 @@ router.post("/signup" , async (req, res, next) =>{
 })
 
 
-//////!Login//////
+                    //////!Login//////
 //*Line44, create route for login.
 router.post("/login", async (req, res, next)=>{
     const {email, password} = req.body
@@ -84,5 +85,9 @@ router.post("/login", async (req, res, next)=>{
 
 
 })
+
+router.get("/verify", (req, res, next)=>{
+    res.status(200).json()
+} )
 
 module.exports = router
