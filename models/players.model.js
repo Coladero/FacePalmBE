@@ -1,39 +1,29 @@
 const { Schema, model } = require("mongoose");
 
 const playerSchema = new Schema(
-    {
-        display_name: {
-        type: String,
-        required: true
-      },
-        nationality:{
-        type:String,
-        required: true
-      },
-        birthdate:{
-        type: String,
-        unique: true
-      },
-        height:{
-        type: String,
-      },
-        image_path:{
-        type: URL,
-      },
-        User: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
+  {
+    player_id: String,
+    display_name: String,
+    shooting:String,
+    dribbling:String,
+    running: String,
+    ballControl: String,
+    image_path: String,
+
+    User: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
-  
-    //en un futuro en el modelo ira un token para que solo se puedan registrar los usuarios
-    //que nos interesan.
-  
-    {
-      timestamps: true,
-    }
-  );
-  
-  const Player = model("Player", playerSchema);
-  
-  module.exports = Player;
+  },
+
+  //en un futuro en el modelo ira un token para que solo se puedan registrar los usuarios
+  //que nos interesan.
+
+  {
+    timestamps: true,
+  }
+);
+
+const Player = model("Player", playerSchema);
+
+module.exports = Player;

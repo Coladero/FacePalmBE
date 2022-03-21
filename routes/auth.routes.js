@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const UserModel = require("../models/User.model");
+const PlayerModel = require("../models/Players.model")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const {isAuthed} = require("../middleware/isAuthed")
@@ -85,6 +86,8 @@ router.post("/login", async (req, res, next)=>{
 
 
 })
+
+
 
 router.get("/verify", (req, res, next)=>{
     res.status(200).json()
