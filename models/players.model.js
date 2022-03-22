@@ -10,7 +10,7 @@ const playerSchema = new Schema(
     ballControl: String,
     image_path: String,
 
-    User: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },

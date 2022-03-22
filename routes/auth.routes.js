@@ -3,7 +3,7 @@ const UserModel = require("../models/User.model");
 const PlayerModel = require("../models/Players.model")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const {isAuthed} = require("../middleware/isAuthed")
+const isAuthed = require("../middleware/isAuthed")
 
 
                     //////!SignUp//////
@@ -67,7 +67,7 @@ router.post("/login", async (req, res, next)=>{
             return;
         }
         //*4.Line68, now that is everything OK, give the token to the User, use payload.
-        const payLoad = {
+        const payload = {
             _id:checkUser._id,
             email:checkUser.email,
             name:checkUser.name,
@@ -75,7 +75,7 @@ router.post("/login", async (req, res, next)=>{
         }
         //*4.1.Line75, now give the authToken to the user.
         const authToken = jwt.sign(
-            payLoad,
+            payload,
             process.env.SECRET_TOKEN,
             {algorithm: "HS256", expiresIn: "6h"}
         )
@@ -86,6 +86,19 @@ router.post("/login", async (req, res, next)=>{
 
 
 })
+
+router.get("/profile",isAuthed, async (req, res, next)=>{
+    const{_id} = req.payload
+
+    try{
+        const response = await PlayerModel.find({user:_id})
+        console.log(response)
+        res.json(response)
+    }catch(err){
+      next(err)
+    }
+})
+
 
 
 
