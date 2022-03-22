@@ -21,4 +21,7 @@ router.use("/players", playersModifyRoutes)
 const profileRoutes = require("./profile.routes")
 router.use("/Profile", profileRoutes)
 
+const chatRoutes = require("./chat.routes")
+router.use("/chat", chatRoutes)
+
 module.exports = router;
