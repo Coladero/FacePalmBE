@@ -15,4 +15,10 @@ router.use("/auth", authRoutes)
 const footballApiRoutes = require("./api.routes")
 router.use("/football-api", footballApiRoutes)
 
+const playersModifyRoutes = require("./players.routes")
+router.use("/players", playersModifyRoutes)
+
+const profileRoutes = require("./profile.routes")
+router.use("/Profile", profileRoutes)
+
 module.exports = router;
