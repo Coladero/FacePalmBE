@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const isAuthed = require("../middleware/isAuthed");
-const PlayerModel = require("../models/Players.model")
+const PlayerModel = require("../models/Player.model")
+const UserModel = require("../models/User.model")
 
 
 router.get("/profile",isAuthed, async (req, res, next)=>{
@@ -8,11 +9,14 @@ router.get("/profile",isAuthed, async (req, res, next)=>{
 
     try{
         const response = await PlayerModel.find({user:_id})
-        console.log(response)
+        // console.log(response)
         res.json(response)
     }catch(err){
       next(err)
     }
 })
+
+
+
 
 module.exports = router

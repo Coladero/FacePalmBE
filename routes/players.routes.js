@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const PlayersModel = require("../models/Players.model")
+const PlayersModel = require("../models/Player.model")
 const isAuthed = require("../middleware/isAuthed")
 
   router.get("/player/:id/edit", async (req, res, next)=>{
