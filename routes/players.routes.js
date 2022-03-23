@@ -3,21 +3,21 @@ const PlayersModel = require("../models/Player.model")
 const isAuthed = require("../middleware/isAuthed")
 
   router.get("/player/:id/edit", async (req, res, next)=>{
-    const {player_id, shooting, dribbling, running, ballControl} = req.body
+    const {player_id, display_name, shooting, dribbling, running, ballControl} = req.body
     try{
-        const response = await PlayersModel.findById(id,{player_id, shooting, dribbling, running, ballControl})
+        const response = await PlayersModel.findById(id,{player_id, display_name, shooting, dribbling, running, ballControl})
         res.json(response)
     }catch{
         
     }
   })
   router.patch("/player/:id/edit", async (req, res, next) => {
-    const {player_id, shooting, dribbling, running, ballControl} = req.body
+    const {player_id, display_name, shooting, dribbling, running, ballControl} = req.body
     const { id } = req.params
   
     try {
   
-    await PlayersModel.findByIdAndUpdate(id, {player_id, shooting, dribbling, running, ballControl })
+    await PlayersModel.findByIdAndUpdate(id, {player_id, display_name, shooting, dribbling, running, ballControl })
       res.json("Updated player")
   
     } catch(err) {

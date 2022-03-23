@@ -22,6 +22,6 @@ const profileRoutes = require("./profile.routes")
 router.use("/Profile", profileRoutes)
 
 const chatRoutes = require("./chat.routes")
-router.use("/chat", chatRoutes)
+router.use("/chat",isAuthed, chatRoutes)
 
 module.exports = router;

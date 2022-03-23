@@ -6,7 +6,7 @@ const User = require("../models/User.model");
 
 //* Get the user's from the DB.
 
-router.get("/users", isAuthed, async (req, res, next)=>{
+router.get("/users", async (req, res, next)=>{
     try{
         const response = await User.find().select("name")
         // console.log(response)
@@ -16,7 +16,7 @@ router.get("/users", isAuthed, async (req, res, next)=>{
     }
 });
 //*Line19, Make the route for create the chat.
-router.post("/messenger/:userId",isAuthed, async (req, res, next)=>{
+router.post("/messenger/:userId", async (req, res, next)=>{
     //*Line21, first user
     const {_id} = req.payload
     
