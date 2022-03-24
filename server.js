@@ -16,7 +16,7 @@ const Message = require("./models/Message.model")
 //*Make new server for listen the chat and give the Cors, listen myServer and newServer
 const serverIo = new Server(myServer, {
   cors:{
-    origin: process.env.ORIGIN || "http://localhost:3000"
+    origin: process.env.ORIGIN
   }
 })
 
