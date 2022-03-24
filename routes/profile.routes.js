@@ -7,8 +7,8 @@ const UserModel = require("../models/User.model")
 router.get("/profile", isAuthed, async (req, res, next) =>{
   const {_id} = req.payload
     try{
-      const response = await UserModel.findById(_id)
-      res.json(response.data)
+      const response = await UserModel.findById({_id})
+      res.json(response)
     }catch(err){
       next(err)
     }
