@@ -4,7 +4,16 @@ const PlayerModel = require("../models/Player.model")
 const UserModel = require("../models/User.model")
 
 
-router.get("/profile",isAuthed, async (req, res, next)=>{
+router.get("/profile", isAuthed, async (req, res, next) =>{
+  const {_id} = req.payload
+    try{
+      const response = await UserModel.findById(_id)
+      res.json(response.data)
+    }catch(err){
+      next(err)
+    }
+})
+router.get("/agenda",isAuthed, async (req, res, next)=>{
     const{_id} = req.payload
 
     try{

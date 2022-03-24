@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const PlayersModel = require("../models/Player.model")
+const PlayerModel = require("../models/Player.model")
 const isAuthed = require("../middleware/isAuthed")
 
   router.get("/player/:id/edit", async (req, res, next)=>{
     const {player_id, display_name, shooting, dribbling, running, ballControl} = req.body
     try{
-        const response = await PlayersModel.findById(id,{player_id, display_name, shooting, dribbling, running, ballControl})
+        const response = await PlayerModel.findById(id,{player_id, display_name, shooting, dribbling, running, ballControl})
         res.json(response)
     }catch{
         
@@ -17,7 +17,7 @@ const isAuthed = require("../middleware/isAuthed")
   
     try {
   
-    await PlayersModel.findByIdAndUpdate(id, {player_id, display_name, shooting, dribbling, running, ballControl })
+    await PlayerModel.findByIdAndUpdate(id, {player_id, display_name, shooting, dribbling, running, ballControl })
       res.json("Updated player")
   
     } catch(err) {
@@ -30,7 +30,7 @@ const isAuthed = require("../middleware/isAuthed")
     const {id} = req.params
   
     try {
-      await PlayersModel.findByIdAndDelete(id)
+      await PlayerModel.findByIdAndDelete(id)
       res.json("Player delete")
     } catch(err) {
       next(err)
@@ -42,7 +42,7 @@ const isAuthed = require("../middleware/isAuthed")
     const {  display_name, image_path, shooting, dribbling, running, ballControl} = req.body
     // console.log(req.body)z
     try{
-        const response = await PlayersModel.create({
+        const response = await PlayerModel.create({
           player_id: id,
           display_name: display_name,
           image_path: image_path,
