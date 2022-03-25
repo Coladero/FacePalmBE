@@ -77,7 +77,7 @@ router.post("/login", async (req, res, next)=>{
         const authToken = jwt.sign(
             payload,
             process.env.SECRET_TOKEN,
-            {algorithm: "HS256", expiresIn: "6h"}
+            {algorithm: "HS256", expiresIn: "1h"}
         )
         res.status(200).json({authToken})
     }catch(err){
